@@ -109,8 +109,7 @@ import PINCache
             self._preCachedURLs.removeValue(forKey: _key)
         } else {
             // Trying to retrieve a track from cache syncronously
-            let data = try? storage?.object(forKey: _key)
-            if let unwrappedData = data {
+            if let storageData = try? storage?.object(forKey: _key), let unwrappedData = storageData {
                 // The file is cached.
                 self._existsInStorage = true
                 let mimeTypeResult = getMimeType(url:url, explicitVideoExtension: videoExtension)
